@@ -1,5 +1,6 @@
 # Dzimiela_Bark
 Pulled down the Bark files from Dane Hillards Chapter 6 repository on the Bark.py to have a working place to start from. 
+https://github.com/daneah/practices-of-the-python-pro/tree/master/ch06
 
 Items that I would like to be able to code to test for:
 
