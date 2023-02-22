@@ -12,3 +12,7 @@ Create flat list or database and then use similar "Fetchone" command as in #1 to
 https://stackoverflow.com/questions/45569344/how-to-tell-if-a-value-exists-in-a-sqlite3-database-python
 
 3. Validation of Deletion event.
+
+
+Be sure to look under the SPRING2023 Drop down for different branches and refactors.
+https://github.com/ahuimanu/CIDM6330
