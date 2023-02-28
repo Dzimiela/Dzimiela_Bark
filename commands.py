@@ -1,5 +1,4 @@
 import sys
-import sqlite3
 from datetime import datetime
 
 from database import DatabaseManager
@@ -9,35 +8,13 @@ db = DatabaseManager('bookmarks.db')  # <1>
 
 class CreateBookmarksTableCommand:
     def execute(self):  # <2>
-        # Create cursor object
-        cur = con.cursor()
- 
-        cur._execute("""SELECT title
-                          ,id
-                   FROM * bookmarks
-                   WHERE title = self""",
-                (self))
-                
-
-    # Fetch one result from the query because it
-    # doesn't matter how many records are returned.
-    # If it returns just one result, then you know
-    # that a record already exists in the table.
-    # If no results are pulled from the query, then
-    # fetchone will return None.
-        result = cur.fetchone()
-
-        if result: # Do something that tells the user that email/user handle already exists
-            return 'Record already exists!'
-        
-        else:
-            db.create_table('bookmarks', {  # <3>
+        db.create_table('bookmarks', {  # <3>
             'id': 'integer primary key autoincrement',
             'title': 'text not null',
             'url': 'text not null',
             'notes': 'text',
             'date_added': 'text not null',
-            })
+        })
 
 
 class AddBookmarkCommand:
