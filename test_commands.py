@@ -1,43 +1,12 @@
-import sys
-from datetime import datetime
+# how would I test Barky?
+# First, I wouldn't test barky, I would test the reusable modules barky relies on:
+# commands.py and database.py
 
-from test_database import DatabaseManager
+# we will use pytest: https://docs.pytest.org/en/stable/index.html
 
-db = DatabaseManager('bookmarks.db')  # <1>
+# should we test quit? No, its behavior is self-evident and not logic dependent
+def test_quit_command():
+    pass
 
-
-class CreateBookmarksTableCommand:
-    def execute(self):  # <2>
-        db.create_table('bookmarks', {  # <3>
-            'id': 'integer primary key autoincrement',
-            'title': 'text not null',
-            'url': 'text not null',
-            'notes': 'text',
-            'date_added': 'text not null',
-        })
-
-
-class AddBookmarkCommand:
-    def execute(self, data):
-        data['date_added'] = datetime.utcnow().isoformat()  # <1>
-        db.add('bookmarks', data)  # <2>
-        return 'Bookmark added!'  # <3>
-
-
-class ListBookmarksCommand:
-    def __init__(self, order_by='date_added'):  # <1>
-        self.order_by = order_by
-
-    def execute(self):
-        return db.select('bookmarks', order_by=self.order_by).fetchall()  # <2>
-
-
-class DeleteBookmarkCommand:
-    def execute(self, data):
-        db.delete('bookmarks', {'id': data})  # <1>
-        return 'Bookmark deleted!'
-
-
-class QuitCommand:
-    def execute(self):
-        sys.exit()  # <1>
+# okay, should I test the other commands?
+# not really, they are tighly coupled with sqlite3 and its use in the database.py module
