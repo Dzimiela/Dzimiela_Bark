@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime
 
-from database import DatabaseManager
+from test_database import DatabaseManager
 
 db = DatabaseManager('bookmarks.db')  # <1>
 

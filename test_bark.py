@@ -3,7 +3,7 @@
 import os
 from collections import OrderedDict
 
-import test_commands
+import commands
 import unittest
 
 class Test_Barky(unittest.TestCase):
@@ -86,11 +86,11 @@ def loop():  # <1>
     clear_screen()
 
     options = OrderedDict({
-        'A': Option('Add a bookmark', test_commands.AddBookmarkCommand(), prep_call=get_new_bookmark_data),
-        'B': Option('List bookmarks by date', test_commands.ListBookmarksCommand()),
-        'T': Option('List bookmarks by title', test_commands.ListBookmarksCommand(order_by='title')),
-        'D': Option('Delete a bookmark', test_commands.DeleteBookmarkCommand(), prep_call=get_bookmark_id_for_deletion),
-        'Q': Option('Quit', test_commands.QuitCommand()),
+        'A': Option('Add a bookmark', commands.AddBookmarkCommand(), prep_call=get_new_bookmark_data),
+        'B': Option('List bookmarks by date', commands.ListBookmarksCommand()),
+        'T': Option('List bookmarks by title', commands.ListBookmarksCommand(order_by='title')),
+        'D': Option('Delete a bookmark', commands.DeleteBookmarkCommand(), prep_call=get_bookmark_id_for_deletion),
+        'Q': Option('Quit', commands.QuitCommand()),
     })
     print_options(options)
 
@@ -102,7 +102,7 @@ def loop():  # <1>
 
 
 if __name__ == '__main__':
-    test_commands.CreateBookmarksTableCommand().execute()
+    commands.CreateBookmarksTableCommand().execute()
 
     while True:  # <3>
         loop()
@@ -110,10 +110,10 @@ if __name__ == '__main__':
 
 def for_listings_only():
     options = {
-        'A': Option('Add a bookmark', test_commands.AddBookmarkCommand()),
-        'B': Option('List bookmarks by date', test_commands.ListBookmarksCommand()),
-        'T': Option('List bookmarks by title', test_commands.ListBookmarksCommand(order_by='title')),
-        'D': Option('Delete a bookmark', test_commands.DeleteBookmarkCommand()),
-        'Q': Option('Quit', test_commands.QuitCommand()),
+        'A': Option('Add a bookmark', commands.AddBookmarkCommand()),
+        'B': Option('List bookmarks by date', commands.ListBookmarksCommand()),
+        'T': Option('List bookmarks by title', commands.ListBookmarksCommand(order_by='title')),
+        'D': Option('Delete a bookmark', commands.DeleteBookmarkCommand()),
+        'Q': Option('Quit', commands.QuitCommand()),
     }
     print_options(options)
