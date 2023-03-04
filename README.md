@@ -7,3 +7,4 @@ https://docs.python.org/3/library/unittest.html
 https://github.com/ahuimanu/CIDM6330
 
 
+3. Validation of Deletion event.
