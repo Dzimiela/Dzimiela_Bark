@@ -23,6 +23,13 @@ def database_manager() -> DatabaseManager:
     dbm.__del__()           # explicitly release the database manager
     os.remove(filename)
 
+#Missing steps of validation need to be attempted to be assessed or integrated.
+    def test_database_delete(database_manager)
+        
+    def test_database_select(database_manager)
+        
+    def test_database_execute(database_manager)
+
 
 def test_database_manager_create_table(database_manager):
     # arrange and act
