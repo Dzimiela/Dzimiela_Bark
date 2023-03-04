@@ -24,12 +24,35 @@ def database_manager() -> DatabaseManager:
     os.remove(filename)
 
 #Missing steps of validation need to be attempted to be assessed or integrated.
-    def test_database_delete(database_manager)
+#def test_database_delete(database_manager):
         
-    def test_database_select(database_manager)
+#def test_database_select(database_manager):
         
-    def test_database_execute(database_manager)
+#def test_database_execute(database_manager):
+        
+def test_database_drop_table(database_manager):
+    database_manager.create_table(
+        "bookmarks",
+        {
+            "id": "integer primary key autoincrement",
+            "title": "text not null",
+            "url": "text not null",
+            "notes": "text",
+            "date_added": "text not null",
+        },
+    )
 
+    #assert
+    conn = database_manager.connection
+    cursor = conn.cursor()
+
+    cursor.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='bookmarks' ''')
+
+    #cursor.execute( f''' DROP TABLE {table_name};''')
+
+    database_manager.drop_table("bookmarks")
+
+    assert cursor.fetchone()[1] == 0
 
 def test_database_manager_create_table(database_manager):
     # arrange and act
