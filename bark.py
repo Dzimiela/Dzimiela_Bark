@@ -4,12 +4,7 @@ import os
 from collections import OrderedDict
 
 import commands
-import unittest
 
-class Test_Barky(unittest.TestCase):
-    def test_print_bookmarks(self):
-        bookmark = print_bookmarks()
-        self.assertEqual(message, message, msg=None)
 
 def print_bookmarks(bookmarks):
     for bookmark in bookmarks:
