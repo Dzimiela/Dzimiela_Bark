@@ -7,6 +7,13 @@
 # should we test quit? No, its behavior is self-evident and not logic dependent
 def test_quit_command():
     pass
+#example addition
+def f():
+    return 3
+
+
+def test_function():
+    assert f() == 4
 
 # okay, should I test the other commands?
 # not really, they are tighly coupled with sqlite3 and its use in the database.py module
