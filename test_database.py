@@ -24,12 +24,51 @@ def database_manager() -> DatabaseManager:
     os.remove(filename)
 
 #Missing steps of validation need to be attempted to be assessed or integrated.
-#def test_database_delete(database_manager):
+def test_database_delete(self):
+    placeholders = [f'{column} = ?' for column in criteria.keys()]
+    delete_criteria = ' AND '.join(placeholders)
+    self._execute(
+         f'''
+         DELETE FROM {table_name}
+         WHERE {delete_criteria};
+         ''',
+         tuple(criteria.values()), #https://www.w3schools.com/python/python_tuples.asp
+     )
+    assert delete_criteria == ' AND '.join(placeholders)
+    
+def test_database_select(database_manager):
+    database_manager.select()
+    criteria = criteria or {}
+    
+    query = f'SELECT * FROM {table_name}'
+    if criteria:
+        placeholders = [f'{column} = ?' for column in criteria.keys()]
+        select_criteria = ' AND '.join(placeholders)
+        query += f' WHERE {select_criteria}'
+
+    if order_by:
+        query += f' ORDER BY {order_by}'
+
+    return self._execute(
+        query,
+        tuple(criteria.values()),
+    )
+    assert criteria == criteria or {}
         
-#def test_database_select(database_manager):
-        
-#def test_database_execute(database_manager):
-        
+def test_database_execute():
+    with self.connection: #https://www.pythonforbeginners.com/files/with-statement-in-python
+        cursor = self.connection.cursor()
+        cursor.execute(statement, values or [])
+        return cursor
+    assert cursor == self.connection.cursor()
+
+
+def test_database_add():
+    placeholders = ', '.join('?' * len(data))
+    column_names = ', '.join(data.keys())
+    assert column_values == tuple(data.values())
+    
+           
 def test_database_drop_table(database_manager):
     database_manager.create_table(
         "bookmarks",
@@ -46,13 +85,13 @@ def test_database_drop_table(database_manager):
     conn = database_manager.connection
     cursor = conn.cursor()
 
-    cursor.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='bookmarks' ''')
+    #cursor.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='bookmarks' ''')
 
-    #cursor.execute( f''' DROP TABLE {table_name};''')
+    cursor.execute( f''' DROP TABLE {table_name};''')
 
     database_manager.drop_table("bookmarks")
 
-    assert cursor.fetchone()[1] == 0
+    assert cursor.fetchone()[0] == 1
 
 def test_database_manager_create_table(database_manager):
     # arrange and act
