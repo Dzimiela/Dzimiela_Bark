@@ -3,5 +3,3 @@ PS F:\School\WTAMU\CIDM6330\Dzimiela_Bark> & C:/Users/Casey/AppData/Local/Micros
 
 PS F:\School\WTAMU\CIDM6330\Dzimiela_Bark> & C:/Users/Casey/AppData/Local/Microsoft/WindowsApps/python3.10.exe -m pytest -v .\test_database.py
 
-Assign 6 ideas Take a look at this https://github.com/ahuimanu/CIDM6330/tree/SPRING2023/projects/Barky/src/barkylib and it will give you ideas about how he expects us to change things. 
-I would think something in the middle (look at the previous code commits) would get where you are talking about going.
